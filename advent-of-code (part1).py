@@ -1,15 +1,20 @@
-with open('measurements.txt', 'r') as file:
-    data = file.read().splitlines()
+def increasedMeasurements(data):
+    numOfIncreased = 0
+    prev = data[0]
 
-data = [int(i) for i in data]
+    for i in data:
+        if i > prev:
+            numOfIncreased += 1
+        prev = i
+    
+    return numOfIncreased
 
-numOfIncreased = 0
-prev = data[0]
+def main():
+    with open('measurements.txt', 'r') as file:
+        data = file.read().splitlines()
 
-for i in data:
-    if i > prev:
-        numOfIncreased += 1
-    prev = i
+    data = [int(i) for i in data]
 
-print(numOfIncreased)
+    print("The number of increased measurements is: " + str(increasedMeasurements(data)))
 
+main()
